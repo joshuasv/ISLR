@@ -1,0 +1,29 @@
+DEBUG: False
+SEED: 42
+
+preprocessing:
+  min_n_frames: 6
+  max_n_frames: 50
+  n_neighbors: 10
+  landmarks_to_include: 
+    pose: ['POSE_UPPER']
+    face: ['FACE_LIPS', 'FACE_REYE', 'FACE_LEYE']
+
+model:
+  num_gcn_scales: 13
+  num_g3d_scales: 6
+
+train:
+  data_path: 'more_data_00'
+  num_epochs: 60
+  batch_size: 32
+  val_interval: 3
+  save_interval: 3
+  optimizer: 'torch.optim.Adam'
+  lr_scheduler: 
+    class: 'torch.optim.lr_scheduler.CosineAnnealingLR'
+    params: 
+      T_max: 15
+      eta_min: 0.00000000000001
+  lr: 0.001
+  device: 0
